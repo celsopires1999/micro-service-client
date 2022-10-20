@@ -41,6 +41,7 @@ export function CategoriesTable({
 
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", flex: 1, renderCell: renderNameCell },
+    { field: "description", headerName: "Description", flex: 1, renderCell: renderDescriptionCell },
     {
       field: "isActive",
       headerName: "Active",
@@ -62,6 +63,7 @@ export function CategoriesTable({
     return categories.map((category) => ({
       id: category.id,
       name: category.name,
+      description: category.description,
       isActive: category.is_active,
       created_at: new Date(category.created_at).toLocaleDateString("pt-BR"),
     }));
@@ -88,6 +90,12 @@ export function CategoriesTable({
       >
         <Typography color="primary">{rowData.value}</Typography>
       </Link>
+    );
+  }
+
+  function renderDescriptionCell(rowData: GridRenderCellParams) {
+    return (
+        <Typography color="primary">{rowData.value}</Typography>
     );
   }
 
